@@ -41,10 +41,10 @@ public class UserView {
     public void login() {
         // 1. 안내와 입력
         scan.nextLine();
-        System.out.println("아이디 : ");
-        String uid = scan.next();
-        System.out.println("비밀번호 : ");
-        String upwd = scan.next();
+        System.out.print("아이디 : ");
+        String uid = scan.nextLine();
+        System.out.print("비밀번호 : ");
+        String upwd = scan.nextLine();
         // 2. dao에게 입력받은 값 인수로 전달 후 리턴
         int result = userDao.login(uid, upwd);
         // 3. 결과 따른 출력물
@@ -63,18 +63,18 @@ public class UserView {
     public void signUp() {
         // 1. 안내와 입력
         scan.nextLine();
-        System.out.println("아이디 : ");
-        String uid = scan.next();
-        System.out.println("비밀번호 : ");
-        String upwd = scan.next();
-        System.out.println("성함 : ");
-        String uname = scan.next();
-        System.out.println("전화번호 : ");
-        String uphone = scan.next();
+        System.out.print("아이디 : ");
+        String uid = scan.nextLine();
+        System.out.print("비밀번호 : ");
+        String upwd = scan.nextLine();
+        System.out.print("성함 : ");
+        String uname = scan.nextLine();
+        System.out.print("전화번호 : ");
+        String uphone = scan.nextLine();
         // 2. dao에게 입력받은 값 인수로 전달 후 리턴
         int result = userDao.signUp(uid, upwd, uname, uphone);
         // 3. 결과 따른 출력물
-        if( result == 0){
+        if (result == 0) {
             System.out.println("[안내] 회원가입에 성공했습니다.");
         } else if (result == 1) {
             System.out.println("[경고] 회원가입에 실패했습니다. 아이디를 입력하세요.");

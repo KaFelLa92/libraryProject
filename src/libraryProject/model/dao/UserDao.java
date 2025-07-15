@@ -21,24 +21,24 @@ public class UserDao {
 
     // 3) 회원가입 기능 구현
     public int signUp(String uid, String upwd, String uname, String uphone) {
-        // 기본값
-        int result = 1; // '가입 실패. 아이디 입력하세요'가 기본
         // 객체화
         UserDto userDto = new UserDto(uid, upwd, uname, uphone);
         // 유효성 검사
-        if (upwd == null) {   // 비번 공란?
-            result = 2;
-        } else if (uname == null) {
-            result = 3;
-        } else if (uphone == null) {
-            result = 4;
+        if (uid == null || uid.isEmpty()) {   // 비번 공란?
+            return 1;
         }
-        if (uid != null && upwd != null && uname != null && uphone != null) {
-            // 객체 넣어라
-            userDB.add(userDto);
-            result = 0; // 가입 성공
+        if (upwd == null || upwd.isEmpty()) {
+            return 2;
         }
-        return result;
+        if (uname == null || uname.isEmpty()) {
+            return 3;
+        }
+        if (uphone == null || uphone.isEmpty()) {
+            return 4;
+        }
+        // DB저장
+        userDB.add(userDto);
+        return 0; // 가입 성공
     }
 
     // 4) 로그인 기능 구현
@@ -51,12 +51,15 @@ public class UserDao {
         for (UserDto user : userDB) {
             if (user.getUid().equals(uid) && user.getUpwd().equals(upwd)) {
                 return 0;
-            } else if (upwd == null) {
+            } else if (uid == null && upwd != null) {
+                return 1;
+            } else if (upwd == null && uid != null) {
                 return 2;
             } else if (!user.getUid().equals(uid) || !user.getUpwd().equals(upwd)) {
                 return 3;
             }
         } // for end
+        System.out.println(result);
         return result;
     }
 
