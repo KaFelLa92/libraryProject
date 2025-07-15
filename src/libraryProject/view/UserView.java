@@ -40,6 +40,7 @@ public class UserView {
     // 4) 로그인 구현
     public void login() {
         // 1. 안내와 입력
+        scan.nextLine();
         System.out.println("아이디 : ");
         String uid = scan.next();
         System.out.println("비밀번호 : ");
@@ -61,6 +62,7 @@ public class UserView {
     // 5) 회원가입 구현
     public void signUp() {
         // 1. 안내와 입력
+        scan.nextLine();
         System.out.println("아이디 : ");
         String uid = scan.next();
         System.out.println("비밀번호 : ");
