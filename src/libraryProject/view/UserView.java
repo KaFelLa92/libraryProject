@@ -59,8 +59,29 @@ public class UserView {
     }
 
     // 5) 회원가입 구현
-    public void signUp(){
+    public void signUp() {
         // 1. 안내와 입력
         System.out.println("아이디 : ");
+        String uid = scan.next();
+        System.out.println("비밀번호 : ");
+        String upwd = scan.next();
+        System.out.println("성함 : ");
+        String uname = scan.next();
+        System.out.println("전화번호 : ");
+        String uphone = scan.next();
+        // 2. dao에게 입력받은 값 인수로 전달 후 리턴
+        int result = userDao.signUp(uid, upwd, uname, uphone);
+        // 3. 결과 따른 출력물
+        if( result == 0){
+            System.out.println("[안내] 회원가입에 성공했습니다.");
+        } else if (result == 1) {
+            System.out.println("[경고] 회원가입에 실패했습니다. 아이디를 입력하세요.");
+        } else if (result == 2) {
+            System.out.println("[경고] 회원가입에 실패했습니다. 비밀번호를 입력하세요.");
+        } else if (result == 3) {
+            System.out.println("[경고] 회원가입에 실패했습니다. 이름을 입력하세요.");
+        } else if (result == 4) {
+            System.out.println(" [경고] 회원가입에 실패했습니다. 휴대전화번호를 입력하세요.");
+        }
     }
 }
