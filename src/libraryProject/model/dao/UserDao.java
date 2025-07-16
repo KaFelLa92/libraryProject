@@ -9,9 +9,7 @@ public class UserDao {
     // 1) 싱글톤 세팅
     private UserDao() {
     }
-
     public static final UserDao instance = new UserDao();
-
     public static UserDao getInstance() {
         return instance;
     }
@@ -24,16 +22,16 @@ public class UserDao {
         // 객체화
         UserDto userDto = new UserDto(uid, upwd, uname, uphone);
         // 유효성 검사
-        if (uid == null || uid.isEmpty()) {   // 비번 공란?
+        if (uid == null || uid.trim().isEmpty()) {   // 비번 공란?
             return 1;
         }
-        if (upwd == null || upwd.isEmpty()) {
+        if (upwd == null || upwd.trim().isEmpty()) {
             return 2;
         }
-        if (uname == null || uname.isEmpty()) {
+        if (uname == null || uname.trim().isEmpty()) {
             return 3;
         }
-        if (uphone == null || uphone.isEmpty()) {
+        if (uphone == null || uphone.trim().isEmpty()) {
             return 4;
         }
         // DB저장
@@ -47,10 +45,10 @@ public class UserDao {
         UserDto userDto = new UserDto(uid, upwd);
 
         //유효성 검사
-        if (uid == null || uid.isEmpty()) {
+        if (uid == null || uid.trim().isEmpty()) {
             return 1;
         }
-        if (upwd == null || upwd.isEmpty()) {
+        if (upwd == null || upwd.trim().isEmpty()) {
             return 2;
         }
         // 유효성 검사 : for문으로

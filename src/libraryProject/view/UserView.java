@@ -1,22 +1,20 @@
 package libraryProject.view;
 
+import libraryProject.controller.UserController;
 import libraryProject.model.dao.UserDao;
 
 import java.util.Scanner;
 
 public class UserView {
     // 1) 싱글톤 세팅
-    private UserView() {
-    }
-
+    private UserView() {}
     public static final UserView instance = new UserView();
-
     public static UserView getInstance() {
         return instance;
     }
 
-    // 2) dao 싱글톤 가져오기
-    private UserDao userDao = UserDao.getInstance();
+    // 2) 컨트롤러 싱글톤 가져오기
+    private UserController userController = UserController.getInstance();
 
     // * 스캐너
     private Scanner scan = new Scanner(System.in);
@@ -28,6 +26,7 @@ public class UserView {
             System.out.println("1. 로그인 | 2. 회원가입");
             System.out.print("선택 > ");
             int select = scan.nextInt();
+            scan.nextLine();
             if (select == 1) {
                 login();
             }
@@ -40,13 +39,12 @@ public class UserView {
     // 4) 로그인 구현
     public void login() {
         // 1. 안내와 입력
-        scan.nextLine();
         System.out.print("아이디 : ");
         String uid = scan.nextLine();
         System.out.print("비밀번호 : ");
         String upwd = scan.nextLine();
-        // 2. dao에게 입력받은 값 인수로 전달 후 리턴
-        int result = userDao.login(uid, upwd);
+        // 2. 컨트롤러에게 입력받은 값 인수로 전달 후 리턴
+        int result = userController.login(uid, upwd);
         // 3. 결과 따른 출력물
         if (result == 0) {
             System.out.println(" [안내] 로그인 성공했습니다.");
@@ -62,7 +60,6 @@ public class UserView {
     // 5) 회원가입 구현
     public void signUp() {
         // 1. 안내와 입력
-        scan.nextLine();
         System.out.print("아이디 : ");
         String uid = scan.nextLine();
         System.out.print("비밀번호 : ");
@@ -71,8 +68,8 @@ public class UserView {
         String uname = scan.nextLine();
         System.out.print("전화번호 : ");
         String uphone = scan.nextLine();
-        // 2. dao에게 입력받은 값 인수로 전달 후 리턴
-        int result = userDao.signUp(uid, upwd, uname, uphone);
+        // 2. 컨트롤러에게 입력받은 값 인수로 전달 후 리턴
+        int result = userController.signUp(uid, upwd, uname, uphone);
         // 3. 결과 따른 출력물
         if (result == 0) {
             System.out.println("[안내] 회원가입에 성공했습니다.");
