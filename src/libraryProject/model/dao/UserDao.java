@@ -43,26 +43,30 @@ public class UserDao {
 
     // 4) 로그인 기능 구현
     public int login(String uid, String upwd) {
-        // 기본값
-        int result = 1; // 로그인 실패. 아이디 입력하세요가 기본
         // 객체화
         UserDto userDto = new UserDto(uid, upwd);
+
+        //유효성 검사
+        if (uid == null || uid.isEmpty()) {
+            return 1;
+        }
+        if (upwd == null || upwd.isEmpty()) {
+            return 2;
+        }
         // 유효성 검사 : for문으로
         for (UserDto user : userDB) {
             if (user.getUid().equals(uid) && user.getUpwd().equals(upwd)) {
-                return 0;
-            } else if (uid == null && upwd != null) {
-                return 1;
-            } else if (upwd == null && uid != null) {
-                return 2;
-            } else if (!user.getUid().equals(uid) || !user.getUpwd().equals(upwd)) {
-                return 3;
-            }
-        } // for end
-        System.out.println(result);
-        return result;
+                return 0; //아이디 비번 일치
+            } // for end
+
+        }
+        return 3; // 아이디 비번 불일치
+
+
     }
 
     // 5) 로그아웃 기능 구현 : 누구세요?
 
 }
+
+
