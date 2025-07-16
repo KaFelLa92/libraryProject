@@ -31,9 +31,9 @@ public class BookView {
         }
     }
     public void addBook() {
-        System.out.print("Enter Book Name : ");
+        System.out.print("Add Book Name(등록할 책) : ");
         String bookName = sc.next();
-        System.out.print("Enter Book Author : ");
+        System.out.print(" Book Author name(저자): ");
         String bookAuthor = sc.next();
         boolean result = BookController.addBook(bookName, bookAuthor);
 
@@ -57,12 +57,14 @@ public class BookView {
         System.out.print("검색할 책 : ");
         String bookName = sc.next();
         ArrayList<BookDto> books = BCL.getBooks();
+        boolean result = false;
         for (int i = 0 ; i < books.size(); i++ ) {
             BookDto book = books.get(i);
             if (book.getBname().equals(bookName)) {
                 System.out.println("검색하신 책을 찾았습니다 :"+book.getBname());
                 System.out.println("저자 :  "+book.getBwriter());
-            }else {
+                result = true;
+            }if(!result) {
                 System.out.println("검색하신 책을 찾지 못했습니다. ");
             }
         }
