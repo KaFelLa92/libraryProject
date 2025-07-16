@@ -19,7 +19,6 @@ public class BookView {
     private BookController BCL = BookController.getInstance();
 
     private Scanner sc = new Scanner(System.in);
-
     public void ii() {
         for (; ; ) {
             System.out.println("========");
@@ -50,15 +49,17 @@ public class BookView {
         }
     }
 
-    public void getBooks() {
+    public ArrayList<BookDto> getBooks() {
         System.out.println("=================");
         ArrayList<BookDto> books = BCL.getBooks();
         for (int i = 0; i < books.size(); i++) {
             BookDto book = books.get(i);
+            System.out.print("등록된 책의 번호는 :"+ book.getBno());
             System.out.println("등록하신 책 :" + book.getBname());
             System.out.println("저자 : " + book.getBwriter());
             System.out.println("-------------------------");
         }
+        return books;
     }
 
     public void getcheckBook() {
@@ -76,12 +77,12 @@ public class BookView {
                     System.out.println("검색하신 책을 찾았습니다 :" + book.getBname());
                     System.out.println("저자 :  " + book.getBwriter());
                     result = true;
+                    break;
                 }
+            }
                 if (!result) {
                     System.out.println("검색하신 책을 찾지 못했습니다. ");
                 }
-                return;
             }
         }
     }
-}

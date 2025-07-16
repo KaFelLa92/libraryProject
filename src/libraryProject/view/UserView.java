@@ -3,7 +3,10 @@ package libraryProject.view;
 import libraryProject.controller.BookController;
 import libraryProject.controller.UserController;
 import libraryProject.model.dao.UserDao;
+import libraryProject.model.dto.BookDto;
 
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static libraryProject.controller.BookController.addBook;
@@ -111,6 +114,15 @@ public class UserView {
             if (select == 1) {
                 bookView.getcheckBook();
             }
+            if (select == 2) {
+                asd();
+            }
+            if (select == 3) {
+
+            }
+            if (select == 4) {
+
+            }
             if (select == 5) {
                 System.out.println("로그아웃 되었습니다. 안녕히 가십시오.");
                 break;
@@ -138,6 +150,26 @@ public class UserView {
                 break;
             }
         }
+
     }
 
+    public void asd() {
+        for (; ; ) {
+            System.out.println("==도서 대출==");
+            String af = scan.next();
+            ArrayList<BookDto> books = bookView.getBooks();
+            boolean result = false;
+            for (BookDto book : books) {
+                if (book.getBname().equals(af)) {
+                    System.out.println("도서 대출에 성공하셨습니다: " + af);
+                    result = true;
+                    break;
+                }
+            }
+            if (!result) {
+                System.out.println("ㅇㅇㅇ");
+            }
+        }
+    }
 }
+

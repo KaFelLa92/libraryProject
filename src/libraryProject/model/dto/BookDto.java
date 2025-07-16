@@ -13,6 +13,22 @@ public class BookDto {
         this.bwriter = bwriter;
     }
 
+    public int getBno() {
+        return bno;
+    }
+
+    public void setBno(int bno) {
+        this.bno = bno;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        BookDto.count = count;
+    }
+
     public String getBname() {
         return bname;
     }
@@ -32,8 +48,10 @@ public class BookDto {
     @Override
     public String toString() {
         return "BookDto{" +
-                "bname='" + bname + '\'' +
+                "bno=" + bno +
+                ", bname='" + bname + '\'' +
                 ", bwriter='" + bwriter + '\'' +
                 '}';
     }
 }
+

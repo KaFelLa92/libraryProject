@@ -17,9 +17,9 @@ public class BookDao {
     private ArrayList<BookDto> books = new ArrayList<>();
 
 
-    public boolean addBook(String bname, String bwriter) {
+    public boolean addBook(String bname, String bwriter ) {
         for (BookDto book : books) {
-            if (book.getBname().equals(bname) || book.getBwriter().equals(bwriter)) {
+            if (book.getBname().equals(bname) && book.getBwriter().equals(bwriter)) {
                 return false;
             }
         }
