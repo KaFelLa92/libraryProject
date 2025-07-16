@@ -22,6 +22,7 @@ public class UserView {
     // 2) 컨트롤러 싱글톤 가져오기 & 북뷰 싱글톤, 버로우뷰 싱글톤도
     private final UserController userController = UserController.getInstance();
     private final BookView bookView = BookView.getInstance();
+    private final BorrowView borrowView = BorrowView.getInstance();
 
     // * 스캐너
     private final Scanner scan = new Scanner(System.in);
@@ -111,6 +112,15 @@ public class UserView {
             if (select == 1) {
                 bookView.getcheckBook();
             }
+            if (select == 2) {
+                borrowView.addBorrow();
+            }
+            if (select == 3) {
+                borrowView.returnBook();
+            }
+            if (select == 4) {
+                borrowView.showBorrowList();
+            }
             if (select == 5) {
                 System.out.println("로그아웃 되었습니다. 안녕히 가십시오.");
                 break;
@@ -132,6 +142,15 @@ public class UserView {
             scan.nextLine();
             if (select == 1) {
                 bookView.getcheckBook();
+            }
+            if (select == 2) {
+                borrowView.addBorrow();
+            }
+            if (select == 3) {
+                borrowView.returnBook();
+            }
+            if (select == 4) {
+                borrowView.showBorrowList();
             }
             if (select == 5) {
                 System.out.println("로그아웃 되었습니다. 안녕히 가십시오.");
